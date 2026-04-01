@@ -9,11 +9,11 @@ declare global {
 
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-export const GoogleAnalytics = () => {
+function GoogleAnalyticsInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -25,10 +25,17 @@ export const GoogleAnalytics = () => {
     }
   }, [pathname, searchParams]);
 
+  return null;
+}
+
+export const GoogleAnalytics = () => {
   if (!GA_ID) return null;
 
   return (
     <>
+      <Suspense fallback={null}>
+        <GoogleAnalyticsInner />
+      </Suspense>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

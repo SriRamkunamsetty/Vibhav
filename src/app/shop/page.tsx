@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { algoliasearch } from "algoliasearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import { DiscoverySidebar } from "@/components/product/DiscoverySidebar";
@@ -18,7 +18,7 @@ const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY || ""
 );
 
-export default function ShopPage() {
+function ShopContent() {
   const [indexName, setIndexName] = useState("products");
   const searchParams = useSearchParams();
 
@@ -83,5 +83,13 @@ export default function ShopPage() {
         </div>
       </InstantSearchNext>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background" />}>
+      <ShopContent />
+    </Suspense>
   );
 }
