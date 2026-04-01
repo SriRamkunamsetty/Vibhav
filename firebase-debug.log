@@ -1,0 +1,47 @@
+[debug] [2026-04-01T11:48:56.872Z] ----------------------------------------------------------------------
+[debug] [2026-04-01T11:48:56.879Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Moksha\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init functions --project default --non-interactive
+[debug] [2026-04-01T11:48:56.879Z] CLI Version:   15.10.0
+[debug] [2026-04-01T11:48:56.879Z] Platform:      win32
+[debug] [2026-04-01T11:48:56.879Z] Node Version:  v24.13.1
+[debug] [2026-04-01T11:48:56.879Z] Time:          Wed Apr 01 2026 17:18:56 GMT+0530 (India Standard Time)
+[debug] [2026-04-01T11:48:56.880Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-01T11:48:56.883Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Major Projects\Vibhav
+
+[debug] [2026-04-01T11:49:00.573Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-04-01T11:49:00.574Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-04-01T11:49:28.510Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-01T11:49:28.511Z] > authorizing via signed-in user (mohansriramkunamsetty@gmail.com)
+[debug] [2026-04-01T11:49:28.515Z] Checked if tokens are valid: false, expires at: 1775044165000
+[debug] [2026-04-01T11:49:28.515Z] Checked if tokens are valid: false, expires at: 1775044165000
+[debug] [2026-04-01T11:49:28.516Z] > refreshing access token with scopes: []
+[debug] [2026-04-01T11:49:28.519Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-04-01T11:49:28.519Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-04-01T11:49:29.333Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-04-01T11:49:29.334Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-04-01T11:49:29.351Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/default [none]
+[debug] [2026-04-01T11:49:30.553Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/default 403
+[debug] [2026-04-01T11:49:30.554Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/default {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-04-01T11:49:30.555Z] Request to https://firebase.googleapis.com/v1beta1/projects/default had HTTP Error: 403, The caller does not have permission
+[debug] [2026-04-01T11:49:31.265Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/default had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\Moksha\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:53:12)
+    at RetryOperation._fn (C:\Users\Moksha\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:333:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[error] 
+[error] Error: Failed to get Firebase project default. Please make sure the project exists and your account has permission to access it.

@@ -1,0 +1,51 @@
+name: "📚 Documentation Automation"
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/**"
+      - "functions/**"
+      - "scripts/**"
+      - "public/**"
+  workflow_dispatch:
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "📦 Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: "🚀 Install Dependencies"
+        run: |
+          npm ci
+          sudo apt-get update
+          sudo apt-get install -y libgbm-dev libnss3 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon-x11-0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libgtk-3-0
+
+      - name: "📸 Capture Screenshots"
+        run: |
+          npm run dev &
+          npx wait-on http://localhost:3000 --timeout 60000
+          npx tsx scripts/captureScreenshots.ts
+        env:
+          NEXT_PUBLIC_MOCK_AUTH: "true"
+
+      - name: "📝 Update README"
+        run: npx tsx scripts/generateReadme.ts
+
+      - name: "✅ Commit Documentation"
+        run: |
+          git config --global user.name "Documentation Bot"
+          git config --global user.email "bot@vidhavsri.com"
+          git add docs/images/ README.md
+          git diff --staged --quiet || (git commit -m "docs: auto-update architecture & visuals [skip ci]" && git push)
