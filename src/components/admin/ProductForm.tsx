@@ -23,7 +23,7 @@ export const ProductForm = ({ initialData, onSuccess }: ProductFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<ProductFormValues>({
-    resolver: zodResolver(ProductSchema.omit({ id: true, createdAt: true, updatedAt: true })),
+    resolver: zodResolver(ProductSchema.omit({ id: true, createdAt: true, updatedAt: true })) as any,
     defaultValues: initialData || {
       name: "",
       description: "",
@@ -44,7 +44,7 @@ export const ProductForm = ({ initialData, onSuccess }: ProductFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-4 bg-card/50 rounded-lg">
+    <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-4 p-4 bg-card/50 rounded-lg">
       <div className="space-y-2">
         <label className="text-xs font-bold uppercase text-zinc-500">Product Name</label>
         <Input {...register("name")} placeholder="Premium Watch..." />

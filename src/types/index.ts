@@ -12,7 +12,7 @@ export const ProductSchema = z.object({
   rating: z.number().min(0).max(5).default(0),
   numReviews: z.number().int().nonnegative().default(0),
   featured: z.boolean().default(false),
-  _searchFields: z.record(z.any()).optional(),
+  _searchFields: z.record(z.string(), z.any()).optional(),
   createdAt: z.any(),
   updatedAt: z.any(),
 });

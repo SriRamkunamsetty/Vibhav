@@ -8,7 +8,7 @@ export const animations = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 20 },
-    transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
+    transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] as [number, number, number, number] },
   },
   float: {
     animate: {
@@ -16,7 +16,7 @@ export const animations = {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   },

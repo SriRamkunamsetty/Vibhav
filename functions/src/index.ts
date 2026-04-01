@@ -58,7 +58,7 @@ export const syncProductToAlgolia = onDocumentWritten("products/{productId}", as
   if (!result.success) {
     const errorLog = {
       productId,
-      errors: result.error.errors,
+      errors: result.error.issues,
       payload: rawData,
       failedAt: admin.firestore.FieldValue.serverTimestamp(),
     };
